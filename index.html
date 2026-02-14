@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine 💖</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
+
+body{
+overflow:hidden;
+}
+
+.page{
+    width:100vw;
+    height:100vh;
+    position:absolute;
+    top:0;
+    left:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    text-align:center;
+    background-size:cover;
+    background-position:center;
+    color:white;
+    padding:20px;
+
+    opacity:0;
+    transform:translateY(20px);
+    pointer-events:none;
+    transition:all 0.8s cubic-bezier(.68,-0.55,.27,1.55);
+}
+
+.page.active{
+    opacity:1;
+    transform:translateY(0);
+    pointer-events:auto;
+}
+
+.text-box{
+background:rgba(128, 0, 0, 0.5);   /* warna box transparan */
+padding:15px 25px;
+border-radius:25px;
+backdrop-filter:blur(5px);
+}
+
+.page.active{
+display:flex;
+}
+
+/* 🔧 CUSTOM BACKGROUND */
+#page1{background-image:url("valentine's lollipop card holder 🍓🍰💌🧸.jpeg");}
+#page2{background-image:url("14feb.jpeg");}
+#page3{background-image:url("14feb3.jpeg");}
+#giftPage{background-image:url("8864a35e-6c98-4c74-aaa3-eccfe9ea3d5b.jpeg");}
+
+button{
+padding:12px 25px;
+border:none;
+border-radius:30px;
+cursor:pointer;
+margin-top:20px;
+}
+
+#yesBtn{background:#ff4d6d;color:white;}
+#noBtn{background:#444;color:white;}
+
+.icons{
+align-items:center;
+justify-content:center;
+display:flex;
+gap:25px;
+margin-top:30px;
+}
+
+.icon{
+width:90px;
+height:90px;
+border-radius:20px;
+overflow:hidden;
+cursor:pointer;
+}
+
+.icon img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.gallery{
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:25px;
+width:100%;
+}
+
+.gallery img{
+width:75%;          /* ubah ini untuk besar kecil */
+max-width:500px;    /* batas maksimal */
+height:auto;        /* biar tidak gepeng */
+border-radius:20px;
+}
+.text-box2{
+background:rgba(255, 105, 180, 0.3);; 
+;   /* warna box transparan */
+padding:15px 25px;
+border-radius:25px;
+backdrop-filter:blur(5px);
+}
+
+.spotify{
+margin-top:20px;
+}
+
+.spotify img{
+width:200px;
+border-radius:20px;
+margin-bottom:15px;
+}
+
+.backBtn{
+margin-top:30px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+<div class="text-box">
+  <div class="text-box2">
+<h1>Will u be my Valentine? 💘</h1>
+</div>
+<button id="yesBtn">Yes 💖</button>
+<button id="noBtn">No 💔</button>
+</div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+  <div class="text-box">
+    <div class="text-box2">
+<h2>
+Yippeee, thanks for click "yes" baby gurl 🥹💖 <br><br>
+HAPPY VALENTINE'S DAY MY HONEY BUNNY SWEEATIE PIE 🫰💐💋🫦💕🫶<br><br>
+I promise to stay, love, and annoy you forever 😏💕
+</h2>
+</div>
+<button onclick="showPage('page3')">click to open honey 😏💕🎁</button>
+</div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="page3">
+  <div class="text-box">
+    <div class="text-box2">
+<h1>Memories 🎁</h1>
+</div>
+<div class="icons">
+<div class="icon" onclick="openGift(1)">
+<img src="icon1.jpeg"> <!-- 🔧 icon kiri -->
+</div>
+
+<div class="icon" onclick="openGift(2)">
+<img src="icon2.jpeg"> <!-- 🔧 icon tengah -->
+</div>
+
+<div class="icon" onclick="openGift(3)">
+<img src="icon3.jpeg"> <!-- 🔧 icon kanan -->
+</div>
+</div>
+</div>
+</div>
+
+<!-- GIFT PAGE -->
+<div class="page" id="giftPage">
+  <div class="text-box">
+<div id="giftContent"></div>
+<button class="backBtn" onclick="showPage('page3')">Back 💖</button>
+</div>
+
+<script>
+const pages=document.querySelectorAll(".page");
+const noBtn=document.getElementById("noBtn");
+let noScale=1;
+
+function showPage(id){
+    pages.forEach(p=>p.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
+}
+
+document.getElementById("yesBtn").onclick=()=>{
+    
+    // 🎉 CONFETTI EFFECT
+    confetti({
+        particleCount:150,
+        spread:90,
+        origin:{ y:0.6 }
+    });
+
+    setTimeout(()=>{
+        showPage("page2");
+    },800);
+};
+
+noBtn.onclick=()=>{
+noScale-=0.15;
+if(noScale<=0.2)noScale=0.2;
+noBtn.style.transform=`scale(${noScale})`;
+};
+
+function openGift(type){
+let content="";
+
+if(type==1){
+content=`
+<div class="text-box2">
+<h1>First Meet 💕</h1>
+</div>
+<div class="gallery">
+<img src="1000183710-removebg-preview.png"> <!-- 🔧 foto atas -->
+<div class="text-box2">
+<p>minggu, 13 juli 2025 - 05.38</p>
+</div>
+<br>
+<img src="robloxho.jpg"> <!-- 🔧 foto bawah -->
+<div class="text-box2">
+<p><p>minggu, 13 juli 2025 - 05.32</p>
+</div>
+<div class="text-box2">
+<p>It started with just logging in to play like usual. I never expected to end up meeting you. Out of all the players in Losblox, somehow you were the one who felt different. That day was just a small encounter in the game, but it felt like the beginning of a story I never wanted to skip.</p>
+</div>
+</div>
+`;
+}
+
+else if(type==2){
+content=`
+<div class="text-box2">
+<h1>Song for you 🎵</h1>
+</div>
+<div class="spotify">
+<img src="Screenshot_20260213_205248_Google.jpg" onclick="playMusic()">
+<br>
+<audio id="music" src="Edd_Sheeran_-_Perfect_(mp3.pm).mp3"></audio> <!-- 🔧 GANTI LAGU -->
+<div class="text-box2">
+<p>I chose the song “Perfect” by Ed Sheeran to describe you, because the song tells the story of finding someone at just the right time, with feelings that are sincere and never forced. It’s not just about falling in love, but about finding someone who makes everything feel simpler and more meaningful at the same time.
+Every lyric feels like it describes feelings that grow slowly, not the kind that suddenly appear and then fade away. There’s certainty, comfort, and a sense of peace that can’t really be explained with words alone. You’re like the meaning of that song itself — showing up naturally, without pressure, without drama, yet somehow feeling the most real.
+The song also carries a sense of trust — that the person standing in front of us is someone we want to protect and make happy. And every time the song plays, it feels like a reminder that finding you wasn’t just a coincidence, but something truly meaningful.<p>
+</div>
+
+<div class="text-box2">
+<p>Tap the image to play honey 🫰💐💖</p>
+</div>
+</div>
+`;
+}
+
+else if(type==3){
+content=`
+<div class="text-box2">
+<h1>Our Memories 💞</h1>
+</div>
+<br>
+<div class="gallery">
+<img src="1771033801522.jpg">
+<img src="20260213_215738.png">
+<img src="1771033566568.jpg">
+<img src="20260214_082115.jpg">
+</div>
+`;
+}
+
+document.getElementById("giftContent").innerHTML=content;
+showPage("giftPage");
+}
+
+function playMusic(){
+document.getElementById("music").play();
+}
+</script>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+</body>
+</html>
